@@ -7,10 +7,10 @@ Gem::Specification.new do |spec|
   spec.name          = "whitehouse"
   spec.version       = Whitehouse::VERSION
   spec.authors       = ["travisdahlke"]
-  spec.email         = ["travis@dahlke.me"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.email         = ["travis.dahlke@whcc.com"]
+  spec.summary       = %q{White House Custom Colour API Client}
+  spec.description   = %q{A client gem for submitting orders to the White House Custom Colour API}
+  spec.homepage      = "http://github.com/travisdahlke/whitehouse"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -20,4 +20,10 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "dotenv"
+  spec.add_development_dependency "pry"
+
+  spec.add_dependency "faraday"
+  spec.add_dependency "faraday_middleware"
 end

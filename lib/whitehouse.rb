@@ -1,5 +1,4 @@
+require "whitehouse/client"
+require "whitehouse/error"
 require "whitehouse/version"
 
-module Whitehouse
-  # Your code goes here...
-end

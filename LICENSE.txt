@@ -1,4 +1,4 @@
-Copyright (c) 2014 travisdahlke
+Copyright (c) 2014 Travis Dahlke
 
 MIT License
 
