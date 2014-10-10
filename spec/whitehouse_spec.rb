@@ -1,15 +1,16 @@
 require 'spec_helper'
-require 'whitehouse'
 
-describe Whitehouse do
+describe Whitehouse, vcr: {cassette_name: 'client', record: :new_episodes} do
   let(:client) { Whitehouse::Client.new(sandbox: true) }
   it 'authenticates' do
     expect { client }.not_to raise_error
   end
 
   describe '#request_catalog' do
-    it 'returns the catalog' do
-      expect(client.request_catalog).to be
+    let(:catalog) { client.request_catalog }
+    let(:categories) { catalog["Categories"] }
+    it 'fetches the product catalog' do
+      expect(categories.length).to eql(2)
     end
   end
 end

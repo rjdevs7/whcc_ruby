@@ -22,6 +22,10 @@ module Whitehouse
       response.body
     end
 
+    def order_submit
+      response = connection.put 'OrderImport'
+    end
+
     def access_token
       @access_token ||= begin
         init_connection unless connection
@@ -36,15 +40,21 @@ module Whitehouse
     private :access_token
 
     def init_connection(oauth = false)
-      @connection = Faraday.new(@host, headers: {'Accept' => 'application/json'}) do |faraday|
+      @connection = Faraday.new(@host, headers: {'User-Agent' => user_agent, 'Accept' => 'application/json'}) do |faraday|
         faraday.request :url_encoded
         faraday.request :oauth2, access_token if oauth
 
         faraday.response :json, :content_type => /\bjson$/
+        faraday.response :raise_error
         faraday.adapter Faraday.default_adapter
       end
     end
     private :init_connection
+
+    def user_agent
+      @user_agent ||= "Whitehouse Ruby Gem #{Whitehouse::VERSION}"
+    end
+    private :user_agent
 
   end
 end
