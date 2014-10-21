@@ -22,11 +22,11 @@ module Whitehouse
       Whitehouse::Configurable.keys.each do |key|
         instance_variable_set(:"@#{key}", options[key] || Whitehouse.instance_variable_get(:"@#{key}"))
       end
-
-      init_connection :oauth2
     end
 
-    attr_reader :connection
+    def connection
+      @connection || init_connection(:oauth2)
+    end
 
     # Compares client options to a Hash of requested options
     # 

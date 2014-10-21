@@ -7,8 +7,8 @@ module Whitehouse
 
     def access_token
       @access_token ||= begin
-        init_connection unless connection
-        response = connection.post 'AccessToken', {grant_type: 'consumer_credentials',
+        init_connection unless @connection
+        response = @connection.post 'AccessToken', {grant_type: 'consumer_credentials',
                                                    consumer_key: consumer_key,
                                                    consumer_secret: consumer_secret}
         response.body.fetch("Token")
