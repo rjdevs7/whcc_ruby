@@ -13,7 +13,7 @@ module Whitehouse
                                                    consumer_secret: consumer_secret}
         response.body.fetch("Token")
       end
-    rescue
+    rescue StandardError => ex
       raise Whitehouse::Error, "Failed to authenticate with WHCC. Check your credentials."
     end
     private :access_token

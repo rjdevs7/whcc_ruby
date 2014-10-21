@@ -4,7 +4,7 @@ require "whitehouse/error"
 require "whitehouse/configurable"
 require "whitehouse/authentication"
 require "whitehouse/client/catalog"
-require "whitehouse/client/order_submit"
+require "whitehouse/client/order"
 
 module Whitehouse
 
@@ -16,7 +16,7 @@ module Whitehouse
     include Whitehouse::Configurable
     include Whitehouse::Authentication
     include Whitehouse::Client::Catalog
-    include Whitehouse::Client::OrderSubmit
+    include Whitehouse::Client::Order
 
     def initialize(options = {})
       Whitehouse::Configurable.keys.each do |key|
@@ -31,7 +31,7 @@ module Whitehouse
     # Compares client options to a Hash of requested options
     # 
     # @param opts [Hash] Options to compare with current client options
-    # @reutrn [Boolean]
+    # @return [Boolean]
     def same_options?(opts)
       opts.hash == options.hash
     end
@@ -55,12 +55,14 @@ module Whitehouse
 
     def init_connection(oauth = false)
       @connection = Faraday.new(api_endpoint, connection_options) do |faraday|
+        faraday.request :multipart
         faraday.request :url_encoded
         faraday.request :oauth2, access_token if oauth
 
+        # faraday.response :logger
         faraday.response :mashify
         faraday.response :json, :content_type => /\bjson$/
-        faraday.response :raise_error
+        # faraday.response :raise_error
         faraday.adapter Faraday.default_adapter
       end
     end

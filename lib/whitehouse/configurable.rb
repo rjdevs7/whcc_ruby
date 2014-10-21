@@ -1,5 +1,19 @@
 module Whitehouse
   module Configurable
+    # @!attribute api_endpoint
+    #   @return [String] Base URL for API requests. default: https://apps.whcc.com/api
+    # @!attribute connection_options
+    #   @see https://github.com/lostisland/faraday
+    #   @return [Hash] Configure connection options for Faraday
+    # @!attribute consumer_key
+    #   @return [String] Configure OAuth app key
+    # @!attribute [w] consumer_secret
+    #   @return [String] Configure OAuth app secret
+    # @!attribute default_media_type
+    #   @return [String] Configure preferred media type
+    # @!attribute user_agent
+    #   @return [String] Configure User-Agent header for requests.
+
     attr_accessor :api_endpoint, :connection_options, :consumer_key,
                   :consumer_secret, :default_media_type, :user_agent
 
