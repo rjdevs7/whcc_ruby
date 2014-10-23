@@ -3,8 +3,8 @@ require 'json'
 module Whitehouse
   class Order
 
-    attr_accessor :entry_id, :drop_ship, :from_address_value, :instructions, :sequence_number,
-                  :from_address, :to_address, :order_attributes, :reference
+    attr_accessor :entry_id, :drop_ship, :from_address_value, :sequence_number,
+                  :from_address, :to_address, :order_attributes
     attr_reader :items
 
     def initialize
@@ -15,19 +15,19 @@ module Whitehouse
     OrderItem = Struct.new(:uid, :url, :md5, :attributes) do
       def assets
         [{"AssetPath" => url,
-          "DP2NodeID" => 10000,
+          "PrintedFileName" => "",
           "ImageHash" => md5,
-          "ImageRotation" => 0,
+          "DP2NodeID" => 10000,
           "OffsetX" => 50,
           "OffsetY" => 50,
-          "PrintedFileName" => "file.jpg",
           "X" => 50,
           "Y" => 50,
           "ZoomX" => 100,
           "ZoomY" => 100,
+          "ImageRotation" => 0,
           "isCoverAsset" => false,
           "isJacketAsset" => false,
-          "ColorCorrect" => true}]
+          "ColorCorrect" => false}]
       end
 
       def item_attributes
@@ -36,17 +36,15 @@ module Whitehouse
       end
     end
 
-    Address = Struct.new(:attn, :name, :addr1, :addr2, :addr3, :city, :state, :zip, :country) do
+    Address = Struct.new(:name, :addr1, :addr2, :city, :state, :zip, :country) do
       def to_hash
-        {"Addr1" => addr1,
+        {"Name" => name,
+         "Addr1" => addr1,
          "Addr2" => addr2,
-         "Addr3" => addr3,
-         "Attn" => attn,
          "City" => city,
-         "Country" => country,
-         "Name" => name,
          "State" => state,
-         "Zip" => zip
+         "Zip" => zip,
+         "Country" => country || 'US'
         }
       end
     end
@@ -57,16 +55,16 @@ module Whitehouse
     end
 
     def to_json
-      {"EntryId" => entry_id,
+      {"EntryID" => entry_id,
        "Orders" => [
          {"DropShipFlag" => drop_ship,
            "FromAddressValue" => from_address_value,
            "OrderAttributes" => order_attributes,
-           "Reference" => reference,
-           "Instructions" => instructions,
+           # "Reference" => reference,
+           # "Instructions" => instructions,
            "SequenceNumber" => sequence_number,
            "ShipToAddress" => to_address,
-           "ShipFromAddress" => from_address,
+           # "ShipFromAddress" => from_address,
            "OrderItems" => order_items
         }
       ]
@@ -77,7 +75,7 @@ module Whitehouse
 
     def defaults
       self.drop_ship = 1
-      self.from_address_value = 2
+      self.from_address_value = 1
       self.sequence_number = 1
       self.order_attributes = []
       @items = []
@@ -88,11 +86,12 @@ module Whitehouse
     end
 
     def order_items
-      items.map do |item|
+      items.each_with_index.map do |item, i|
         {"ItemAssets" => item.assets,
          "ItemAttributes" => item.item_attributes,
          "ProductUID" => item.uid,
          "Quantity" => 1,
+         "LineItemID" => i,
          "LayoutRotation" => 0}
       end
     end
