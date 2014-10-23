@@ -12,7 +12,7 @@ module Whitehouse
       yield self if block_given?
     end
 
-    OrderItem = Struct.new(:uid, :url, :md5, :attributes) do
+    OrderItem = Struct.new(:uid, :url, :md5, :attributes, :rotation) do
       def assets
         [{"AssetPath" => url,
           "PrintedFileName" => "",
@@ -92,7 +92,7 @@ module Whitehouse
          "ProductUID" => item.uid,
          "Quantity" => 1,
          "LineItemID" => i,
-         "LayoutRotation" => 0}
+         "LayoutRotation" => item.rotation}
       end
     end
 
