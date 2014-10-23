@@ -5,6 +5,7 @@ require "whitehouse/configurable"
 require "whitehouse/authentication"
 require "whitehouse/client/catalog"
 require "whitehouse/client/order"
+require "whitehouse/client/webhook"
 
 module Whitehouse
 
@@ -17,6 +18,7 @@ module Whitehouse
     include Whitehouse::Authentication
     include Whitehouse::Client::Catalog
     include Whitehouse::Client::Order
+    include Whitehouse::Client::Webhook
 
     def initialize(options = {})
       Whitehouse::Configurable.keys.each do |key|
