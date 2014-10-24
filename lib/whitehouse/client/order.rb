@@ -19,7 +19,7 @@ module Whitehouse
         file.close
         response = connection.post 'OrderImport', {entry: Faraday::UploadIO.new(file.path, "application/json")}
         file.unlink
-        if response.success?
+        if response.success? && !response.body.ErrorNumber
           response.body.ConfirmationID
         else
           false

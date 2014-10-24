@@ -1,0 +1,103 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox.apps.whcc.com/api/OrderImport?access_token=101024773634
+    body:
+      encoding: UTF-8
+      string: "-------------RubyMultipartPost\r\nContent-Disposition: form-data; name=\"entry\";
+        filename=\"entry.json20141024-52208-10sofzc\"\r\nContent-Length: 734\r\nContent-Type:
+        application/json\r\nContent-Transfer-Encoding: binary\r\n\r\n{\"EntryID\":\"123abc\",\"Orders\":[{\"DropShipFlag\":1,\"FromAddressValue\":1,\"OrderAttributes\":[{\"AttributeUID\":95},{\"AttributeUID\":97}],\"SequenceNumber\":1,\"ShipToAddress\":{\"Name\":\"Bill
+        Adama\",\"Addr1\":\"2840 Lone Oak Parkway\",\"Addr2\":null,\"City\":\"Eagan\",\"State\":\"MN\",\"Zip\":55121,\"Country\":\"US\"},\"OrderItems\":[{\"ItemAssets\":[{\"AssetPath\":\"http://lab.whcc.com/ApostleIslandMarina.jpg\",\"PrintedFileName\":\"\",\"ImageHash\":\"60ee3ed946def317eae764516b727f50\",\"DP2NodeID\":10000,\"OffsetX\":50,\"OffsetY\":50,\"X\":50,\"Y\":50,\"ZoomX\":100,\"ZoomY\":100,\"ImageRotation\":0,\"isCoverAsset\":false,\"isJacketAsset\":false,\"ColorCorrect\":false}],\"ItemAttributes\":[{\"AttributeUID\":5},{\"AttributeUID\":1}],\"ProductUID\":3,\"Quantity\":1,\"LineItemID\":0,\"LayoutRotation\":null}]}]}\r\n-------------RubyMultipartPost--\r\n\r\n"
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - Whitehouse Ruby Gem 0.0.1
+      Content-Type:
+      - multipart/form-data; boundary=-----------RubyMultipartPost
+      Content-Length:
+      - '985'
+      Authorization:
+      - Token token="101024773634"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnetmvc-Version:
+      - '5.1'
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Fri, 24 Oct 2014 21:24:28 GMT
+      Content-Length:
+      - '489'
+    body:
+      encoding: UTF-8
+      string: '{"Account":"27919","ConfirmationID":"c0f4087d-2866-48eb-8d34-a7aa4d22911a","EntryID":"123abc","Key":"756216BF68455757BCED","NumberOfOrders":1,"Orders":[{"LineItems":[{"ID":"1"}],"Note":"","Products":[{"Price":"1.10","ProductDescription":"Photo
+        Print 8x10","Quantity":1},{"Price":"10.90","ProductDescription":"Minimum Order
+        Charge","Quantity":1}],"SequenceNumber":"1","SubTotal":"12.00","Tax":"0.85","Total":"12.85"}],"Received":"10/24/2014
+        4:10:26 PM Central Time"}'
+    http_version: 
+  recorded_at: Fri, 24 Oct 2014 21:24:28 GMT
+- request:
+    method: post
+    uri: https://sandbox.apps.whcc.com/api/OrderImport/Submit/ecb9d9e6-42e0-4a69-ad7e-9996dfec343d
+    body:
+      encoding: UTF-8
+      string: "-------------RubyMultipartPost\r\nContent-Disposition: form-data; name=\"access_token\"\r\n\r\n101024773634\r\n-------------RubyMultipartPost--\r\n"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - multipart/form-data; boundary=-----------RubyMultipartPost
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnetmvc-Version:
+      - '5.1'
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Fri, 24 Oct 2014 21:29:15 GMT
+      Content-Length:
+      - '162'
+    body:
+      encoding: UTF-8
+      string: '{"Confirmation":"Entry ID=ecb9d9e6-42e0-4a69-ad7e-9996dfec343d: Confirmed order submitted.","ConfirmedOrders":1,"Received":"10\/24\/2014 4:36:44 PM Central Time"}'
+    http_version: 
+  recorded_at: Fri, 24 Oct 2014 21:29:15 GMT
+recorded_with: VCR 2.9.2

@@ -33,18 +33,18 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 10 Oct 2014 18:24:47 GMT
+      - Fri, 24 Oct 2014 20:46:02 GMT
       Content-Length:
       - '175'
     body:
       encoding: UTF-8
-      string: '{"ClientId":"2791999","ConsumerKey":"FA2DBC52662850A7B53B","EffectiveDate":"10\/10\/2014
-        1:24:47 PM CST","ExpirationDate":"10\/10\/2014 2:24:47 PM CST","Token":"107677418498"}'
+      string: '{"ClientId":"2791999","ConsumerKey":"FA2DBC52662850A7B53B","EffectiveDate":"10\/24\/2014
+        3:46:02 PM CST","ExpirationDate":"10\/24\/2014 4:46:02 PM CST","Token":"101024773634"}'
     http_version: 
-  recorded_at: Fri, 10 Oct 2014 18:24:55 GMT
+  recorded_at: Fri, 24 Oct 2014 20:46:02 GMT
 - request:
     method: get
-    uri: https://sandbox.apps.whcc.com/api/Catalog?access_token=107677418498
+    uri: https://sandbox.apps.whcc.com/api/Catalog?access_token=101024773634
     body:
       encoding: US-ASCII
       string: ''
@@ -54,7 +54,7 @@ http_interactions:
       User-Agent:
       - Whitehouse Ruby Gem 0.0.1
       Authorization:
-      - Token token="107677418498"
+      - Token token="101024773634"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -79,7 +79,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 10 Oct 2014 18:24:54 GMT
+      - Fri, 24 Oct 2014 20:46:10 GMT
       Content-Length:
       - '708592'
     body:
@@ -3262,5 +3262,5 @@ http_interactions:
         Paper","ProductUID":262,"W":11.25000,"X":0,"Y":0}]}]}],"EffectiveDate":"10\/19\/2011","ExpirationDate":"10\/19\/3011","Key":"FA2DBC52662850A7B53B","Name":"Whcc
         Test Company","Started":"10\/19\/2011"}'
     http_version: 
-  recorded_at: Fri, 10 Oct 2014 18:25:02 GMT
+  recorded_at: Fri, 24 Oct 2014 20:46:10 GMT
 recorded_with: VCR 2.9.2
