@@ -1,4 +1,4 @@
-# Whitehouse
+# Whitehouse [![Build Status](https://travis-ci.org/whcc/whcc_ruby.svg?branch=master)](https://travis-ci.org/whcc/whcc_ruby)
 
 Ruby client for the WHCC API.
 
