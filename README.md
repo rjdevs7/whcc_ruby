@@ -20,6 +20,7 @@ Or install it yourself as:
 
 ### Authentication
 Configuration can be done at the module level:
+
 ```ruby
 Whitehouse.configure do |c|
   c.consumer_key = 'FA2DBC52662850A7B53B'
@@ -28,11 +29,13 @@ end
 ```
 
 at the client instance level:
+
 ```ruby
 client = Whitehouse::Client.new(consumer_key: 'FA2DBC52662850A7B53B', consumer_secret: 'rPTa7aIydCI=')
 ```
 
 or via environment variables:
+
 ```
 WHCC_CONSUMER_KEY='FA2DBC52662850A7B53B'
 WHCC_CONSUMER_SECRET='rPTa7aIydCI='
