@@ -12,6 +12,7 @@ describe Whitehouse::Client::Catalog do
     let(:categories) { catalog["Categories"] }
     it 'fetches the product catalog' do
       expect(categories.length).to eql(2)
+      expect(WebMock).to have_requested(:get, /\/api\/Catalog/)
     end
   end
 

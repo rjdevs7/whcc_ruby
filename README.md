@@ -67,6 +67,14 @@ if (confirm)
 end
 ```
 
+### Creating Webhooks
+```ruby
+Whitehouse.create_webhook('http://example.com/webhook')
+
+# WHCC will POST to the uri provided with a 'verifier' token.
+Whitehouse.verify_webhook(verifier)
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/whcc/whcc_ruby/fork )

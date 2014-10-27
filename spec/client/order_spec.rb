@@ -21,6 +21,7 @@ describe Whitehouse::Client::Order, vcr: {cassette_name: 'order', record: :new_e
     it "returns a confirmation code via api" do
       res = client.submit_order(order)
       expect(res.length).to eq(36)
+      expect(WebMock).to have_requested(:post, /\/api\/OrderImport/)
     end
   end
 
@@ -29,6 +30,7 @@ describe Whitehouse::Client::Order, vcr: {cassette_name: 'order', record: :new_e
     it "confirms order via api" do
       res = client.confirm_order(confirmation_code)
       expect(res).to be_truthy
+      expect(WebMock).to have_requested(:post, /\/api\/OrderImport\/Submit\/#{confirmation_code}/)
     end
   end
 
