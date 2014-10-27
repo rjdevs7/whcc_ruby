@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["travis.dahlke@whcc.com"]
   spec.summary       = %q{White House Custom Colour API Client}
   spec.description   = %q{A client gem for submitting orders to the White House Custom Colour API}
-  spec.homepage      = "http://github.com/travisdahlke/whitehouse"
+  spec.homepage      = "http://github.com/whcc/whcc_ruby"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
