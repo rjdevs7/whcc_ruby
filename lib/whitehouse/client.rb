@@ -55,6 +55,40 @@ module Whitehouse
       inspected
     end
 
+    def get(*args)
+      request :get, *args
+    end
+
+    def post(*args)
+      request :post, *args
+    end
+
+    private
+
+    def reset_connection
+      @connection = nil
+      @access_token = nil
+    end
+
+    def request(method, *args)
+      tries ||= 2
+      response = connection.public_send(method, *args)
+      check_errors(response)
+      response
+    rescue Error::AuthorizationExpired => ex
+      reset_connection
+      if (tries -= 1) > 0
+        retry
+      else
+        raise ex
+      end
+    end
+
+    def check_errors(response)
+      raise Error, response.status unless response.success?
+      raise Error::CODES[response.body.ErrorNumber], response.body.Message if response.body.ErrorNumber
+    end
+
     def init_connection(oauth = false)
       @connection = Faraday.new(api_endpoint, connection_options) do |faraday|
         faraday.request :multipart
@@ -68,7 +102,6 @@ module Whitehouse
         faraday.adapter Faraday.default_adapter
       end
     end
-    private :init_connection
 
   end
 end
