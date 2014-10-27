@@ -5,7 +5,7 @@ describe Whitehouse::Client::Order, vcr: {cassette_name: 'order', record: :new_e
     Whitehouse.reset!
   end
 
-  let(:client) { Whitehouse.client }
+  let(:client) { Whitehouse::Client.new(access_token: '101024773634') }
   let(:address) { Whitehouse::Order::Address.new("Bill Adama","2840 Lone Oak Parkway",nil,"Eagan","MN",55121) }
   let(:order_item) { Whitehouse::Order::OrderItem.new(3,"http://lab.whcc.com/ApostleIslandMarina.jpg", "60ee3ed946def317eae764516b727f50", [5,1]) }
   let(:order) {

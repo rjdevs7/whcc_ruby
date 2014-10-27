@@ -1,5 +1,7 @@
 module Whitehouse
   module Configurable
+    # @!attribute access_token
+    #   @return [String] Client access token
     # @!attribute api_endpoint
     #   @return [String] Base URL for API requests. default: https://apps.whcc.com/api
     # @!attribute connection_options
@@ -14,7 +16,7 @@ module Whitehouse
     # @!attribute user_agent
     #   @return [String] Configure User-Agent header for requests.
 
-    attr_accessor :api_endpoint, :connection_options, :consumer_key,
+    attr_accessor :access_token, :api_endpoint, :connection_options, :consumer_key,
                   :consumer_secret, :default_media_type, :user_agent
 
     class << self
@@ -23,6 +25,7 @@ module Whitehouse
       # @return [Array] of option keys
       def keys
         @keys ||= [
+          :access_token,
           :api_endpoint,
           :connection_options,
           :consumer_key,

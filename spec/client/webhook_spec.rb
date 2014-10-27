@@ -5,7 +5,7 @@ describe Whitehouse::Client::Webhook, vcr: {cassette_name: 'webhook', record: :n
     Whitehouse.reset!
   end
 
-  let(:client) { Whitehouse.client }
+  let(:client) { Whitehouse::Client.new(access_token: '101024773634') }
 
   describe "#create_webhook" do
     let(:uri) { "http://example.com/webhook" }
