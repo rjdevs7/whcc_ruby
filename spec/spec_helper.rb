@@ -4,6 +4,8 @@ Dotenv.load '.env.test'
 require 'whitehouse'
 require 'vcr'
 require 'webmock/rspec'
+require 'coveralls'
+Coveralls.wear!
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/cassettes'
