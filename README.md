@@ -1,4 +1,4 @@
-# Whitehouse [![Build Status](https://travis-ci.org/whcc/whcc_ruby.svg?branch=master)](https://travis-ci.org/whcc/whcc_ruby)
+# Whitehouse [![Build Status](https://travis-ci.org/whcc/whcc_ruby.svg?branch=master)](https://travis-ci.org/whcc/whcc_ruby) [![Gem Version](https://badge.fury.io/rb/whitehouse.svg)](http://badge.fury.io/rb/whitehouse) [![Coverage Status](https://coveralls.io/repos/whcc/whcc_ruby/badge.png)](https://coveralls.io/r/whcc/whcc_ruby)
 
 Ruby client for the WHCC API.
 
