@@ -10,7 +10,7 @@ module Whitehouse
       # @param [String] Callback URI
       # @return [Boolean] Success
       def create_webhook(uri)
-        response = connection.post 'callback/create', {callbackUri: uri}
+        response = post 'callback/create', {callbackUri: uri}
         response.body
         response.success? && !response.body.ErrorNumber
       end

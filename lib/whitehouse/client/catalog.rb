@@ -8,7 +8,7 @@ module Whitehouse
 
       # List entire catalog for account
       def request_catalog
-        response = connection.get 'Catalog'
+        response = get 'Catalog'
         response.body
       end
 

@@ -17,7 +17,7 @@ module Whitehouse
         file = Tempfile.new('entry.json')
         file.write(order.to_json)
         file.close
-        response = connection.post 'OrderImport', {entry: Faraday::UploadIO.new(file.path, "application/json")}
+        response = post 'OrderImport', {entry: Faraday::UploadIO.new(file.path, "application/json")}
         file.unlink
         if response.success? && !response.body.ErrorNumber
           response.body.ConfirmationID
