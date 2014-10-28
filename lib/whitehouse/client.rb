@@ -86,7 +86,7 @@ module Whitehouse
 
     def check_errors(response)
       raise Error, response.status unless response.success?
-      raise Error::CODES[response.body.ErrorNumber], response.body.Message if response.body.ErrorNumber
+      raise Error::CODES.fetch(response.body.ErrorNumber, Error), response.body.Message if response.body.ErrorNumber
     end
 
     def init_connection(oauth = false)
