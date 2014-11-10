@@ -92,7 +92,7 @@ module Whitehouse
          "ProductUID" => item.uid,
          "Quantity" => 1,
          "LineItemID" => i,
-         "LayoutRotation" => item.rotation}
+         "LayoutRotation" => item.rotation || 0}
       end
     end
 
