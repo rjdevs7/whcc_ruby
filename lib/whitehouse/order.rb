@@ -57,18 +57,22 @@ module Whitehouse
     def to_json
       {"EntryID" => entry_id,
        "Orders" => [
-         {"DropShipFlag" => drop_ship,
-           "FromAddressValue" => from_address_value,
-           "OrderAttributes" => order_attributes,
-           # "Reference" => reference,
-           # "Instructions" => instructions,
-           "SequenceNumber" => sequence_number,
-           "ShipToAddress" => to_address,
-           # "ShipFromAddress" => from_address,
-           "OrderItems" => order_items
-        }
-      ]
+         order_hash
+        ]
       }.to_json
+    end
+
+    def order_hash
+      {"DropShipFlag" => drop_ship,
+       "FromAddressValue" => from_address_value,
+       "OrderAttributes" => order_attributes,
+       # "Reference" => reference,
+       # "Instructions" => instructions,
+       "SequenceNumber" => sequence_number,
+       "ShipToAddress" => to_address,
+       # "ShipFromAddress" => from_address,
+       "OrderItems" => order_items
+      }
     end
 
     private

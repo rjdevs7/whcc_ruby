@@ -1,6 +1,7 @@
 require "whitehouse/client"
 require "whitehouse/default"
 require "whitehouse/order"
+require "whitehouse/order_entry"
 
 # Ruby toolkit for the WHCC API
 module Whitehouse
