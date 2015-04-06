@@ -70,6 +70,16 @@ if (confirm)
 end
 ```
 
+### Multiple Orders
+Multiple orders can be submitted in a single request using the OrderEntry object
+```ruby
+entry = Whitehouse::OrderEntry.new
+entry.entry_id = '123abc'
+entry.orders << order
+
+confirm = Whitehouse.submit_order(entry)
+```
+
 ### Creating Webhooks
 ```ruby
 Whitehouse.create_webhook('http://example.com/webhook')
