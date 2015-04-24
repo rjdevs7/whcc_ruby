@@ -4,7 +4,7 @@ module Whitehouse
   class Order
 
     attr_accessor :entry_id, :drop_ship, :from_address_value, :sequence_number,
-                  :from_address, :to_address, :order_attributes
+                  :from_address, :to_address, :order_attributes, :instructions
     attr_reader :items
 
     def initialize
@@ -67,7 +67,7 @@ module Whitehouse
        "FromAddressValue" => from_address_value,
        "OrderAttributes" => order_attributes,
        # "Reference" => reference,
-       # "Instructions" => instructions,
+       "Instructions" => instructions,
        "SequenceNumber" => sequence_number,
        "ShipToAddress" => to_address,
        # "ShipFromAddress" => from_address,
@@ -82,6 +82,7 @@ module Whitehouse
       self.from_address_value = 1
       self.sequence_number = 1
       self.order_attributes = []
+      self.instructions = ""
       @items = []
     end
 
