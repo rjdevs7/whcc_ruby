@@ -24,7 +24,7 @@ module Whitehouse
           "Y" => 50,
           "ZoomX" => 100,
           "ZoomY" => 100,
-          "ImageRotation" => 0,
+          "ImageRotation" => rotation || 0,
           "isCoverAsset" => false,
           "isJacketAsset" => false,
           "ColorCorrect" => false}]
@@ -97,7 +97,7 @@ module Whitehouse
          "ProductUID" => item.uid,
          "Quantity" => 1,
          "LineItemID" => i,
-         "LayoutRotation" => item.rotation || 0}
+         "LayoutRotation" => 0}
       end
     end
 
